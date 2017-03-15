@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rm -rf closure
+rm -rf compilation
+rm -rf lib
+rm -rf target
+rm -rf builds

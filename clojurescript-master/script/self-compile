@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rm -rf classes
+mkdir classes
+./script/repl -e "(compile 'cljs.repl.node) (compile 'cljs.repl.browser) (compile 'cljs.repl.rhino) (compile 'cljs.core)"

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -ex
+
+CP_FILE=`mktemp /tmp/cljs_cp.txt.XXXXXXXXXXX`
+
+mvn -f pom.template.xml dependency:build-classpath -Dmdep.outputFile=$CP_FILE
+
+CLJS_CP=`cat $CP_FILE`
+
+# For Hudson server
+if [ "$HUDSON" = "true" ]; then
+    $JAVA_HOME/bin/java -server -cp "$CLJS_CP:src/main/clojure:src/main/cljs" clojure.main script/aot.clj
+else
+    java -server -cp "$CLJS_CP:src/main/clojure:src/main/cljs" clojure.main script/aot.clj
+fi
+
+
+
+

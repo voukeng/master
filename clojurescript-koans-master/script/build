@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rm koans.js
+rm -r out/
+lein cljsbuild once
